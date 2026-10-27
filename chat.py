@@ -18,7 +18,7 @@ def typeout(text):
 
 def kill(name):
     answer2 = input("are you sure? (y/n)")
-    if answer == "y":
+    if answer2 == "y":
         typeout("goodbye " + name + "!")
         return True
 
@@ -28,7 +28,7 @@ def kill(name):
 
 
     
-
+# banner
 print(RED + BOLD +  """
 _______________________________________________
 |                                              |
@@ -39,9 +39,13 @@ _______________________________________________
 |   ███  █   █ █   █   █        █         █    |
 |_____________________________________________ |
 """ + RESET )
-print(GREEN + "i am your personal ai assistance (just without intelligence)" + RESET)
-print()
-print()
+
+while True:
+    print(GREEN + "i am your personal ai assistance (just without intelligence)" + RESET)
+    print()
+    print()
+    break
+# name question
 while True:
     
     name = input(YELLOW + BOLD + "enter your name plaese--" + RESET)
@@ -53,7 +57,7 @@ while True:
         break
     else:
         print("lets try again")
-
+#c menu
 def menu():
     print(GREEN + BOLD + """
 
@@ -80,13 +84,29 @@ while True:
     elif choice == "3":
         print("hmmmm")
     elif choice == "4":
-        kill(name)
-        break
+        if kill(name):
+            break
         
         
     else:
         print()
         print(RED + BOLD + "chose a resonable option from above" + RESET)
 
+def quiz():
+    score = 0
+
+    typeout(YELLOW + """
+
+
+ ███  █   █ █████ ███  ███  █   █ █████     ███  █   █ ███ █████ 
+█   █ ██  █   █    █  █   █ █   █ █        █   █ █   █  █     █  
+█████ █ █ █   █    █  █   █ █   █ ████     █   █ █   █  █    █   
+█   █ █  ██   █    █  █  █  █   █ █        █  █  █   █  █   █    
+█   █ █   █   █   ███  ██ █  ███  █████     ██ █  ███  ███ █████ 
+    
+    
+    
+    
+    """ + RESET)
 
 
