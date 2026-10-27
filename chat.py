@@ -12,7 +12,7 @@ BOLD = "\033[1m"
 def typeout(text):
     for letter in text:
         print(letter, end="" , flush=True)
-        time.sleep(0.10)
+        time.sleep(0.08)
     print()
 
 
