@@ -1,4 +1,12 @@
-print("""
+RESET ="\033[0m"
+CYAN = "\033[36m"
+GREEN ="\033[32m"
+YELLOW ="\033[33m"
+RED ="\033[31m"
+GREY = "\033[90m"
+BOLD = "\033[1m"
+
+print(RED + BOLD +  """
 _______________________________________________
 |                                              |
 |   ███  █   █  ███   █████     █████   █   █  |
@@ -7,13 +15,13 @@ _______________________________________________
 |  █     █   █ █   █   █        █         █    |
 |   ███  █   █ █   █   █        █         █    |
 |_____________________________________________ |
-""")
-print("i am your personal ai assistance (just without intelligence)")
+""" + RESET )
+print(GREEN + "i am your personal ai assistance (just without intelligence)" + RESET)
 print()
 print()
 while True:
     
-    name = input("enter your name plaese--")
+    name = input(YELLOW + BOLD + "enter your name plaese--" + RESET)
     print()
     answer =input("is your name correct?--" + name + " y - yes , n - retry--")
 
