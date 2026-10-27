@@ -94,8 +94,7 @@ while True:
 
 def quiz():
     score = 0
-
-    typeout(YELLOW + """
+    print(YELLOW + """
 
 
  ███  █   █ █████ ███  ███  █   █ █████     ███  █   █ ███ █████ 
@@ -104,9 +103,13 @@ def quiz():
 █   █ █  ██   █    █  █  █  █   █ █        █  █  █   █  █   █    
 █   █ █   █   █   ███  ██ █  ███  █████     ██ █  ███  ███ █████ 
     
-    
+------------- answer all the questions coorectly--------------------    
     
     
     """ + RESET)
+
+    
+
+
 
 
