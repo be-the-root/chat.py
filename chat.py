@@ -25,31 +25,38 @@ while True:
     print()
     answer =input("is your name correct?--" + name + " y - yes , n - retry--")
 
-    if answer == "y":
+    if answer == "y".strip().lower:
         print("nice to meet you " + name)
         break
     else:
         print("lets try again")
 
+def menu():
+    print(GREEN + BOLD + """
+
+------------------menu------------------
+||  1 - say hello (yes it does nothing else)
+
+||  2 - tell me a joke !!!
+
+||  3 - hmmm i dont know , just try
+
+||  4 - quit
+    """ + RESET) 
+
+
+
+
 while True:
-    print("""
 
---------------menu------------
-1 - say hello (yes it does nothing else)
-
-2 - tell me a joke !!!
-
-3 - hmmm i dont know , just try
-    """)        
-
-    choice = input("please chose a option from above- eg- 1")
+    menu()
+    choice = input("please chose a option from above- eg- 1   ")
     if choice == "1":
         print("hello " + name + " !")
     elif choice == "2":
         print("joke!!!")
     elif choice == "3":
         print("hmmmm")
-        break
     else:
         print("chose a resonable option from above")
 
