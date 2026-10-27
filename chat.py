@@ -1,3 +1,5 @@
+import time 
+
 RESET ="\033[0m"
 CYAN = "\033[36m"
 GREEN ="\033[32m"
@@ -5,6 +7,27 @@ YELLOW ="\033[33m"
 RED ="\033[31m"
 GREY = "\033[90m"
 BOLD = "\033[1m"
+
+
+def typeout(text):
+    for letter in text:
+        print(letter, end="" , flush=True)
+        time.sleep(0.10)
+    print()
+
+
+def kill(name):
+    answer2 = input("are you sure? (y/n)")
+    if answer == "y":
+        typeout("goodbye " + name + "!")
+        return True
+
+    else:
+        typeout("okey staying")
+        return False
+
+
+    
 
 print(RED + BOLD +  """
 _______________________________________________
@@ -25,8 +48,8 @@ while True:
     print()
     answer =input("is your name correct?--" + name + " y - yes , n - retry--")
 
-    if answer == "y".strip().lower:
-        print("nice to meet you " + name)
+    if answer == "y":
+        typeout("nice to meet you " + name)
         break
     else:
         print("lets try again")
@@ -46,19 +69,24 @@ def menu():
 
 
 
-
 while True:
 
     menu()
-    choice = input("please chose a option from above- eg- 1   ")
+    choice = input(YELLOW + BOLD +"please chose a option from above- eg- 1   " + RESET)
     if choice == "1":
         print("hello " + name + " !")
     elif choice == "2":
         print("joke!!!")
     elif choice == "3":
         print("hmmmm")
+    elif choice == "4":
+        kill(name)
+        break
+        
+        
     else:
-        print("chose a resonable option from above")
+        print()
+        print(RED + BOLD + "chose a resonable option from above" + RESET)
 
 
 
