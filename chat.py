@@ -108,8 +108,36 @@ def quiz():
     
     """ + RESET)
 
-    
 
+# question 1
+    typeout( GREEN + "ques1--- in which century was the victorian era?" + RESET)
+    print("  a) 16th")
+    print("  b) 17th")
+    print("  c) 19th")
+    print("  d) 20th")
+    print()
+    typeout(YELLOW + BOLD + "just say the option" + RESET)
+    ans = input("your answer")
+    if ans == "c":
+        typeout("correct")
+        score += 1
+    else:
+        typeout("wrong answer , moving to the next question!")
+    print()
+    print()
 
+    # ques 2
+    typeout(GREEN + "ques2--- what is 'patina' on an antique?")
+    print("   a) a type of wood")
+    print("   b) the aged surface flim")
+    print("   c) a brand name")
+    print("   d) a kind of glue")
+    if ans == "b":
+        typeout("correct")
+        score += 1
+    else:
+        typeout("wrong , moving to the next question")
+    print()
+    print()
 
 
