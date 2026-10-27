@@ -122,7 +122,7 @@ def quiz():
         typeout("correct")
         score += 1
     else:
-        typeout("wrong answer , moving to the next question!")
+        typeout( RED + BOLD +"wrong answer , moving to the next question!" + RESET)
     print()
     print()
 
@@ -136,7 +136,7 @@ def quiz():
         typeout("correct")
         score += 1
     else:
-        typeout("wrong , moving to the next question")
+        typeout(RED + "wrong , moving to the next question" + RESET)
     print()
     print()
 
