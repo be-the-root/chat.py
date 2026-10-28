@@ -1,4 +1,6 @@
 import time 
+import random
+import string
 
 RESET ="\033[0m"
 CYAN = "\033[36m"
@@ -7,6 +9,20 @@ YELLOW ="\033[33m"
 RED ="\033[31m"
 GREY = "\033[90m"
 BOLD = "\033[1m"
+
+def ask_yes_no(question):
+    while True:
+        answer = input(question = "(y/n): ").strip().lower()
+        if answer == "y":
+            return True
+        elif answer == "n":
+            return False
+        else:
+            print(RED + "please answer y or n" + RESET)
+
+
+
+
 
 
 def typeout(text, color=""):
@@ -99,12 +115,47 @@ def quiz():
     print()
     print()
 
+    #question4
+    typeout("what does 'provenance' mean for an antique?")
+    print("  a) its price")
+    print("  b) its color")
+    print("  c) its documented owenship history")
+    print("  d) its weight")
+    ans == input("your answer --")
+    if ans == "c":
+        typeout("correct" ,GREEN)
+        score += 1
+    else:
+        typeout("wrong , moving to the next question", RED)
+    space()
+
+    #ques5
+    typeout("which era came just before victrorian?")
+    print("  a) tudor")
+    print("  b) georgian")
+    print("  c) edwardian")
+    print("  d) elizabethan")
+    ans == input("your answer ---")
+    if ans == "b":
+        typeout("correct", GREEN , BOLD)
+        score += 1
+    else:
+        typeout("wrong ")
+    space()
+
+
+
+
+
+
+
+
     # score
     typeout("you scrored " + str(score) + "out of 3")
     space()
-    if score == 3:
+    if score == 5:
         typeout("parfect score")
-    elif score == 2:
+    elif score == 4:
         typeout("almost perfect")
     elif score == 1:
         typeout("we will get better")
