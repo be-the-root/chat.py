@@ -143,3 +143,17 @@ def quiz():
     print()
 
 
+# question3
+    typeout(GREEN + "  which wood is prized in antique furniture???" + RESET)
+    print("  a) pine")
+    print("  b) mahogany")
+    print("  c) plywood")
+    print("  d) bamboo")
+    ans =  input("your answer:  ")
+    if ans == "b":
+        typeout("correct!!")
+        score += 1
+    else:
+        typeout("wrong , moving to the next question")
+    print()
+    print()
