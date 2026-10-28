@@ -54,15 +54,6 @@ def check_strength(pw , lenght):
             bar += "░"
 
     print("strength: " + bar + "  " + str(score) + "%")
-
-
-
-
-
-
-
-
-
 # yes and no
 def ask_yes_no(question):
     while True:
