@@ -9,17 +9,17 @@ YELLOW ="\033[33m"
 RED ="\033[31m"
 GREY = "\033[90m"
 BOLD = "\033[1m"
-
+# yes and no
 def ask_yes_no(question):
     while True:
-        answer = input(question = "(y/n): ").strip().lower()
+        answer = input(question + " (y/n): ").strip().lower()
         if answer == "y":
             return True
         elif answer == "n":
             return False
         else:
             print(RED + "please answer y or n" + RESET)
-
+# password geneator
 def generate_password():
     print()
     print(YELLOW + BOLD + "===========password forge ===========")
@@ -57,7 +57,7 @@ def generate_password():
     if use_digits:
         for ch in string.digits:
             pool.append(ch)
-        required.append(required.choice(string.digits))
+        required.append(random.choice(string.digits))
 
 
     if use_symbols:
@@ -91,31 +91,16 @@ def generate_password():
     print(GREEN + BOLD + "your password : " + RESET)
     print(CYAN + BOLD + "      " + pw + RESET)
     print()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# for typeing effect
 def typeout(text, color=""):
+
+
     print(color, end="", flush=True)
     for letter in text:
         print(letter, end="", flush=True)
         time.sleep(0.04)
     print(RESET)
-
-
+# for exit
 def kill(name):
     answer2 = input("are you sure? (y/n)")
     if answer2 == "y":
@@ -125,12 +110,11 @@ def kill(name):
     else:
         typeout("okey staying")
         return False
-
+# for space   
 def space():
     print()
     print()
-
-
+# quiz
 def quiz():
     score = 0
     print(YELLOW + """
@@ -244,7 +228,6 @@ def quiz():
         typeout("we will get better")
     else:
         typeout("wow dumbo")
-    
 # banner
 print(RED + BOLD +  """
 _______________________________________________
@@ -256,7 +239,6 @@ _______________________________________________
 |   ███  █   █ █   █   █        █         █    |
 |_____________________________________________ |
 """ + RESET )
-
 while True:
     print(GREEN + "i am your personal ai assistance (just without intelligence)" + RESET)
     print()
@@ -291,8 +273,6 @@ def menu():
 
 ||  6 - password generator
     """ + RESET) 
-
-
 # menu loop
 while True:
 
