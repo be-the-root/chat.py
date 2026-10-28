@@ -30,7 +30,7 @@ def check_strength(pw , lenght):
     types = 0
     if has_upper:
         types += 1
-    if has_upper:
+    if has_lower:
         types += 1
     if has_digit: 
         types += 1
