@@ -9,6 +9,60 @@ YELLOW ="\033[33m"
 RED ="\033[31m"
 GREY = "\033[90m"
 BOLD = "\033[1m"
+
+# strenght checker
+def check_strength(pw , lenght):
+    has_lower = False
+    has_upper = False
+    has_digit = False
+    has_symbol = False
+
+    for ch in pw:
+        if ch in string.ascii_lowercase:
+            has_lower = True
+        elif ch in string.ascii_uppercase:
+            has_upper = True
+        elif ch in string.digits:
+            has_digit = True
+        else:
+            has_symbol = True
+
+    types = 0
+    if has_upper:
+        types += 1
+    if has_upper:
+        types += 1
+    if has_digit: 
+        types += 1
+    if has_symbol:
+        types += 1
+
+
+
+    score = types * 25
+    if lenght >= 16:
+        score += 10
+    if score > 100:
+        score = 100
+
+    filled = score // 10
+    bar = "" 
+    for i in range(10):
+        if i < filled:
+            bar += "█"
+        else:
+            bar += "░"
+
+    print("strength: " + bar + "  " + str(score) + "%")
+
+
+
+
+
+
+
+
+
 # yes and no
 def ask_yes_no(question):
     while True:
@@ -91,6 +145,8 @@ def generate_password():
     print(GREEN + BOLD + "your password : " + RESET)
     print(CYAN + BOLD + "      " + pw + RESET)
     print()
+
+    check_strength(pw , length)
 # for typeing effect
 def typeout(text, color=""):
 
