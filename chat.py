@@ -20,6 +20,89 @@ def ask_yes_no(question):
         else:
             print(RED + "please answer y or n" + RESET)
 
+def generate_password():
+    print()
+    print(YELLOW + BOLD + "===========password forge ===========")
+
+
+    while True:
+        text = input("how long? (8-64)")
+        if text.isdigit():
+            length = int(text)
+            if length >= 8 and length <= 64:
+                break
+            print(RED + "give a number between 8 and 64")
+
+
+    use_lower  = ask_yes_no("include lowercase letters?")
+    use_upper  = ask_yes_no("include uppercase letters?")
+    use_digits  = ask_yes_no("include numbers?")
+    use_symbols = ask_yes_no("include symbols??")
+
+    pool = []
+    required = []
+
+    if use_lower:
+        for ch in string.ascii_lowercase:
+            pool.append(ch)
+        required.append(random.choice(string.ascii_lowercase))
+
+    if use_upper:
+        for ch in string.digits:
+            pool.append(ch)
+        required.append(random.choice(string.digits))
+
+
+
+    if use_digits:
+        for ch in string.digits:
+            pool.append(ch)
+        required.append(required.choice(string.digits))
+
+
+    if use_symbols:
+        symbols = "!@#$%^&*(){};:,.?"
+        for ch in symbols:
+            pool.append(ch)
+        required.append(random.choice(symbols))
+
+
+    if len(pool) == 0:
+        print(RED + BOLD +"you didnt picked any character types :( " + RESET)
+        return
+
+
+
+    chars = []
+
+    for ch in required:
+        chars.append(ch)
+
+    while len(chars) < length:
+        chars.append(random.choice(pool))
+
+    random.shuffle(chars)
+
+    pw = ""
+    for ch in chars:
+        pw = pw + ch
+
+    print()
+    print(GREEN + BOLD + "your password : " + RESET)
+    print(CYAN + BOLD + "      " + pw + RESET)
+    print()
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -205,10 +288,12 @@ def menu():
 ||  4 - quit
 
 ||  5 - quiz
+
+||  6 - password generator
     """ + RESET) 
 
 
-
+# menu loop
 while True:
 
     menu()
@@ -224,6 +309,9 @@ while True:
             break
     elif choice == "5":
         quiz()
+
+    elif choice == "6":
+        generate_password()
         
         
     else:
