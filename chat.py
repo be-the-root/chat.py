@@ -320,11 +320,11 @@ def menu():
 
 ||  3 - hmmm i dont know , just try
 
-||  4 - quit
+||  4 - password generator
 
 ||  5 - quiz
 
-||  6 - password generator
+||  6 - quit
     """ + RESET) 
 # menu loop
 while True:
@@ -338,13 +338,13 @@ while True:
     elif choice == "3":
         print("hmmmm")
     elif choice == "4":
-        if kill(name):
-            break
+        generate_password()
     elif choice == "5":
         quiz()
 
     elif choice == "6":
-        generate_password()
+        if kill(name):
+            break
         
         
     else:
