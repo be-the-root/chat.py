@@ -71,12 +71,12 @@ def generate_password():
 
 
     while True:
-        text = input("how long? (8-64)")
+        text = input("how long? (8-64)").strip()
         if text.isdigit():
             length = int(text)
-            if length >= 8 and length <= 64:
-                break
-            print(RED + "give a number between 8 and 64")
+        if length >= 8 and length <= 64:
+            break
+        print(RED + "give a number between 8 and 64")
 
 
     use_lower  = ask_yes_no("include lowercase letters?")
@@ -93,7 +93,7 @@ def generate_password():
         required.append(random.choice(string.ascii_lowercase))
 
     if use_upper:
-        for ch in string.digits:
+        for ch in string.ascii_uppercase:
             pool.append(ch)
         required.append(random.choice(string.digits))
 
@@ -149,7 +149,7 @@ def typeout(text, color=""):
     print(RESET)
 # for exit
 def kill(name):
-    answer2 = input("are you sure? (y/n)")
+    answer2 = input("are you sure? (y/n)").strip().lower()
     if answer2 == "y":
         typeout("goodbye " + name + "!")
         return True
@@ -189,7 +189,7 @@ def quiz():
     print("  d) 20th")
     print()
     
-    ans = input("your answer")
+    ans = input("your answer").strip().lower
     if ans == "c":
         typeout( GREEN + BOLD +"correct" + RESET)
         score += 1
@@ -220,7 +220,7 @@ def quiz():
     print("  b) mahogany")
     print("  c) plywood")
     print("  d) bamboo")
-    ans =  input("your answer:  ")
+    ans =  input("your answer:  ").strip().lower()
     if ans == "b":
         typeout("correct!!")
         score += 1
@@ -249,12 +249,12 @@ def quiz():
     print("  b) georgian")
     print("  c) edwardian")
     print("  d) elizabethan")
-    ans == input("your answer ---")
+    ans = input("your answer ---").strip().lower
     if ans == "b":
-        typeout("correct", GREEN , BOLD)
+        typeout("correct", GREEN + BOLD)
         score += 1
     else:
-        typeout("wrong ")
+        typeout(RED + BOLD +"wrong " + RESET)
     space()
 
 
@@ -296,7 +296,7 @@ while True:
     
     name = input(YELLOW + BOLD + "enter your name plaese--" + RESET)
     print()
-    answer =input("is your name correct?--" + name + " y - yes , n - retry--")
+    answer =input("is your name correct?--" + name + "(y/n) >>")
 
     if answer == "y":
         typeout("nice to meet you " + name)
