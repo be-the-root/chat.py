@@ -9,6 +9,30 @@ YELLOW ="\033[33m"
 RED ="\033[31m"
 GREY = "\033[90m"
 BOLD = "\033[1m"
+def mian_banner():
+    print("""
+
+
+______________________________________________________ 
+|.................................................... |
+|...███....█...█....███...█████........█████...█...█..|
+|  █       █   █   █   █    █          █   █    █ █   |
+|  █       █████   █████    █   ████   ████      █    |
+|  █       █   █   █   █    █          █         █    |
+|   ███    █   █   █   █    █          █         █    |
+|_____________________________________________________|
+
+    """)
+
+
+
+
+
+
+
+
+
+
 
 def check_strength(pw , lenght):
     has_lower = False
@@ -275,7 +299,7 @@ def quiz():
     else:
         typeout("wow dumbo")
 # banner
-print(RED + BOLD +  """
+print(CYAN + BOLD +  """
 _______________________________________________
 |                                              |
 |   ███  █   █  ███   █████     █████   █   █  |
@@ -295,7 +319,7 @@ while True:
     
     name = input(YELLOW + BOLD + "enter your name plaese--" + RESET)
     print()
-    answer =input(RED + BOLD + "is your name correct?--" + name + "(y/n) >>>" + RESET)
+    answer =input(YELLOW + BOLD + "is your name correct?--" + name + "(y/n) >>>" + RESET)
 
     if answer == "y":
         typeout(CYAN + BOLD + "nice to meet you " + name + RESET)
