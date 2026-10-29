@@ -74,8 +74,8 @@ def generate_password():
         text = input("how long? (8-64)").strip()
         if text.isdigit():
             length = int(text)
-        if length >= 8 and length <= 64:
-            break
+            if length >= 8 and length <= 64: 
+                break                            
         print(RED + "give a number between 8 and 64")
 
 
@@ -95,7 +95,7 @@ def generate_password():
     if use_upper:
         for ch in string.ascii_uppercase:
             pool.append(ch)
-        required.append(random.choice(string.digits))
+        required.append(random.choice(string.ascii_uppercase))
 
 
 
@@ -189,7 +189,7 @@ def quiz():
     print("  d) 20th")
     print()
     
-    ans = input("your answer").strip().lower
+    ans = input("your answer").strip().lower()
     if ans == "c":
         typeout( GREEN + BOLD +"correct" + RESET)
         score += 1
@@ -199,12 +199,12 @@ def quiz():
     print()
 
     # ques 2
-    typeout(GREEN + BOLD + "ques2--- what is 'patina' on an antique?")
+    typeout(GREEN + BOLD + "ques2--- what is 'patina' on an antique?" +  RESET)
     print("   a) a type of wood")
     print("   b) the aged surface flim")
     print("   c) a brand name")
     print("   d) a kind of glue")
-    ans = input("your answer--- ")
+    ans = input("your answer--- ").strip().lower()
     if ans == "b":
         typeout(GREEN + BOLD + "correct" + RESET)
         score += 1
@@ -235,7 +235,7 @@ def quiz():
     print("  b) its color")
     print("  c) its documented owenship history")
     print("  d) its weight")
-    ans == input("your answer --")
+    ans = input("your answer --").strip().lower()
     if ans == "c":
         typeout("correct" ,GREEN)
         score += 1
@@ -249,7 +249,7 @@ def quiz():
     print("  b) georgian")
     print("  c) edwardian")
     print("  d) elizabethan")
-    ans = input("your answer ---").strip().lower
+    ans = input("your answer ---").strip().lower()
     if ans == "b":
         typeout("correct", GREEN + BOLD)
         score += 1
@@ -265,7 +265,7 @@ def quiz():
 
 
     # score
-    typeout("you scrored " + str(score) + "out of 3")
+    typeout("you scrored " + str(score) + "out of 5")
     space()
     if score == 5:
         typeout("parfect score")
