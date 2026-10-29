@@ -9,31 +9,8 @@ YELLOW ="\033[33m"
 RED ="\033[31m"
 GREY = "\033[90m"
 BOLD = "\033[1m"
-def mian_banner():
-    print("""
 
-
-______________________________________________________ 
-|.................................................... |
-|...███....█...█....███...█████........█████...█...█..|
-|  █       █   █   █   █    █          █   █    █ █   |
-|  █       █████   █████    █   ████   ████      █    |
-|  █       █   █   █   █    █          █         █    |
-|   ███    █   █   █   █    █          █         █    |
-|_____________________________________________________|
-
-    """)
-
-
-
-
-
-
-
-
-
-
-
+# strenght checker
 def check_strength(pw , lenght):
     has_lower = False
     has_upper = False
@@ -172,7 +149,7 @@ def typeout(text, color=""):
     print(RESET)
 # for exit
 def kill(name):
-    answer2 = input(RED + BOLD + "are you sure? (y/n)" + RESET)
+    answer2 = input("are you sure? (y/n)")
     if answer2 == "y":
         typeout("goodbye " + name + "!")
         return True
@@ -299,7 +276,7 @@ def quiz():
     else:
         typeout("wow dumbo")
 # banner
-print(CYAN + BOLD +  """
+print(RED + BOLD +  """
 _______________________________________________
 |                                              |
 |   ███  █   █  ███   █████     █████   █   █  |
@@ -319,10 +296,10 @@ while True:
     
     name = input(YELLOW + BOLD + "enter your name plaese--" + RESET)
     print()
-    answer =input(YELLOW + BOLD + "is your name correct?--" + name + "(y/n) >>>" + RESET)
+    answer =input("is your name correct?--" + name + " y - yes , n - retry--")
 
     if answer == "y":
-        typeout(CYAN + BOLD + "nice to meet you " + name + RESET)
+        typeout("nice to meet you " + name)
         break
     else:
         print("lets try again")
@@ -337,11 +314,11 @@ def menu():
 
 ||  3 - hmmm i dont know , just try
 
-||  4 - password generator
+||  4 - quit
 
 ||  5 - quiz
 
-||  6 - quit
+||  6 - password generator
     """ + RESET) 
 # menu loop
 while True:
@@ -355,13 +332,13 @@ while True:
     elif choice == "3":
         print("hmmmm")
     elif choice == "4":
-       generate_password()
+        if kill(name):
+            break
     elif choice == "5":
         quiz()
 
     elif choice == "6":
-     if kill(name):
-       break
+        generate_password()
         
         
     else:
