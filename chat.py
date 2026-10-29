@@ -182,14 +182,14 @@ def quiz():
 
 
     # question 1
-    typeout( GREEN + "ques1--- in which century was the victorian era?" + RESET)
+    typeout( GREEN+ BOLD + "ques1--- in which century was the victorian era?" + RESET)
     print("  a) 16th")
     print("  b) 17th")
     print("  c) 19th")
     print("  d) 20th")
     print()
     
-    ans = input("your answer").strip().lower()
+    ans = input(CYAN + BOLD + "your answer" + RESET ).strip().lower()
     if ans == "c":
         typeout( GREEN + BOLD +"correct" + RESET)
         score += 1
@@ -204,52 +204,52 @@ def quiz():
     print("   b) the aged surface flim")
     print("   c) a brand name")
     print("   d) a kind of glue")
-    ans = input("your answer--- ").strip().lower()
+    ans = input(CYAN + BOLD + "your answer--- " + RESET ).strip().lower()
     if ans == "b":
         typeout(GREEN + BOLD + "correct" + RESET)
         score += 1
     else:
-        typeout(RED + "wrong , moving to the next question" + RESET)
+        typeout(RED + BOLD + "wrong , moving to the next question" + RESET)
     print()
     print()
 
 
 # question3
-    typeout(GREEN + "  which wood is prized in antique furniture???" + RESET)
+    typeout(GREEN + BOLD + "  which wood is prized in antique furniture???" + RESET)
     print("  a) pine")
     print("  b) mahogany")
     print("  c) plywood")
     print("  d) bamboo")
-    ans =  input("your answer:  ").strip().lower()
+    ans =  input(CYAN + BOLD + "your answer:  " + RESET ).strip().lower()
     if ans == "b":
         typeout("correct!!")
         score += 1
     else:
-        typeout("wrong , moving to the next question")
+        typeout(RED + BOLD + "wrong , moving to the next question" + RESET)
     print()
     print()
 
     #question4
-    typeout("what does 'provenance' mean for an antique?")
+    typeout(GREEN + BOLD + "what does 'provenance' mean for an antique?" + RESET)
     print("  a) its price")
     print("  b) its color")
     print("  c) its documented owenship history")
     print("  d) its weight")
-    ans = input("your answer --").strip().lower()
+    ans = input(CYAN + BOLD + "your answer --" + RESET).strip().lower()
     if ans == "c":
-        typeout("correct" ,GREEN)
+        typeout(GREEN + BOLD + "correct" + RESET)
         score += 1
     else:
-        typeout("wrong , moving to the next question", RED)
+        typeout(RED + BOLD + "wrong , moving to the next question" + RESET)
     space()
 
     #ques5
-    typeout("which era came just before victrorian?")
+    typeout(GREEN + BOLD + "which era came just before victrorian?" + RESET)
     print("  a) tudor")
     print("  b) georgian")
     print("  c) edwardian")
     print("  d) elizabethan")
-    ans = input("your answer ---").strip().lower()
+    ans = input(CYAN + BOLD + "your answer ---" + RESET ).strip().lower()
     if ans == "b":
         typeout("correct", GREEN + BOLD)
         score += 1
@@ -265,16 +265,22 @@ def quiz():
 
 
     # score
-    typeout("you scrored " + str(score) + "out of 5")
+    typeout(GREEN + BOLD + "you scrored " + str(score) + "out of 5" + RESET)
     space()
+
+
     if score == 5:
-        typeout("parfect score")
+        typeout(RED + BOLD + "parfect score" + RESET )
     elif score == 4:
-        typeout("almost perfect")
+        typeout(RED + BOLD + "almost perfect" + RESET)
+    elif score == 3:
+        typeout(RED + BOLD  +"good" + RESET)
+    elif score == 2:
+        typeout(RED + BOLD + "not bad" + RESET )
     elif score == 1:
-        typeout("we will get better")
+        typeout(RED + BOLD + "we will get better" + RESET)
     else:
-        typeout("wow dumbo")
+        typeout(RED + BOLD + "wow dumbo" + RESET )
 # banner
 print(RED + BOLD +  """
 _______________________________________________
@@ -294,18 +300,18 @@ while True:
 # name question
 while True:
     
-    name = input(YELLOW + BOLD + "enter your name plaese--" + RESET)
+    name = input(CYAN + BOLD + "enter your name plaese--" + RESET)
     print()
-    answer =input("is your name correct?--" + name + "(y/n) >>")
+    answer =input( RED + BOLD + "is your name correct?--" + name + "(y/n) >>" + RESET)
 
     if answer == "y":
-        typeout("nice to meet you " + name)
+        typeout(CYAN + BOLD  + "nice to meet you " + name + RESET )
         break
     else:
         print("lets try again")
 #c menu
 def menu():
-    print(GREEN + BOLD + """
+    print(CYAN + BOLD + """
 
 ------------------menu------------------
 ||  1 - say hello (yes it does nothing else)
