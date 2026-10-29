@@ -10,7 +10,6 @@ RED ="\033[31m"
 GREY = "\033[90m"
 BOLD = "\033[1m"
 
-# strenght checker
 def check_strength(pw , lenght):
     has_lower = False
     has_upper = False
@@ -149,7 +148,7 @@ def typeout(text, color=""):
     print(RESET)
 # for exit
 def kill(name):
-    answer2 = input("are you sure? (y/n)")
+    answer2 = input(RED + BOLD + "are you sure? (y/n)" + RESET)
     if answer2 == "y":
         typeout("goodbye " + name + "!")
         return True
@@ -296,10 +295,10 @@ while True:
     
     name = input(YELLOW + BOLD + "enter your name plaese--" + RESET)
     print()
-    answer =input("is your name correct?--" + name + " y - yes , n - retry--")
+    answer =input(RED + BOLD + "is your name correct?--" + name + "(y/n) >>>" + RESET)
 
     if answer == "y":
-        typeout("nice to meet you " + name)
+        typeout(CYAN + BOLD + "nice to meet you " + name + RESET)
         break
     else:
         print("lets try again")
@@ -314,11 +313,11 @@ def menu():
 
 ||  3 - hmmm i dont know , just try
 
-||  4 - quit
+||  4 - password generator
 
 ||  5 - quiz
 
-||  6 - password generator
+||  6 - quit
     """ + RESET) 
 # menu loop
 while True:
@@ -332,13 +331,13 @@ while True:
     elif choice == "3":
         print("hmmmm")
     elif choice == "4":
-        if kill(name):
-            break
+       generate_password()
     elif choice == "5":
         quiz()
 
     elif choice == "6":
-        generate_password()
+     if kill(name):
+       break
         
         
     else:
