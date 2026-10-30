@@ -48,6 +48,8 @@ def notes_word_count(body):
     for word in body.split():
         count = count + 1
 
+
+
     return count
 
 def notes_menu():
@@ -59,9 +61,13 @@ def notes_menu():
         print("  "+ str(len(notes)) + " notes")
         print()
         print("  1 - add a note")
-        print("  2 - back")
+        print("  2 - list all")
+        print("  3 - read a note")
+        print("  4 - back")
         print()
         pick = input("  >> ").strip()
+
+
 
 
         if pick == "1":
@@ -78,7 +84,48 @@ def notes_menu():
                 print(" need title and a body")
 
         elif pick == "2":
+            if len(notes) == 0:
+                print("   nothing here  yet")
+            else:
+                for i in range(len(notes)):
+                    parts = notes_parse(notes[i])
+                    mark = ""
+                    if parts[4] == "1":
+                        mark = " *"
+                    print("  " + str(i + 1) + mark + "   " + parts [0])
+
+
+
+
+
+
+
+
+
+        elif pick == "3":
+            num = input("    number: ").strip()
+            if not num.isdigit():
+                print(" >>> type a number")
+                continue
+            n = int(num)
+            if n < 1 or n > len(notes):
+                print("    no such note")
+                continue
+            parts = notes_parse(notes[n - 1])
+            print()
+            print("    ---" + parts[0] + "----")
+            if len(parts[3]) > 0:
+                print("   date  : " + parts[3])
+            if len(parts[2]) > 0:
+                print("   tags : " + parts[2])
+            print("    words : " + str(notes_word_count(parts[1])))
+            print()
+            print("   " + parts[1])
+
+            print()
+        elif pick == "4":
             break
+
 
 
 
