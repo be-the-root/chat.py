@@ -1,3 +1,4 @@
+import datetime
 import time 
 import random
 import string
@@ -9,6 +10,81 @@ YELLOW ="\033[33m"
 RED ="\033[31m"
 GREY = "\033[90m"
 BOLD = "\033[1m"
+
+def notes_load():
+    notes = []
+    try:
+        with open("notes.txt") as f:
+            for line in f:
+                line = line.strip()
+                if line:
+                    notes.append(line)
+    except FileNotFoundError:
+        pass
+    return notes
+
+
+
+def notes_save(notes):
+    with open("notes.txt" , "w") as f:
+        for note in notes:
+            f.write(note + "\n")
+
+
+
+
+def notes_parse(note):
+    parts = note.split("|||")
+    while len(parts) < 5:
+        parts.append("")
+    return parts
+
+def notes_formet(title , body , tags , date , pinned):
+    return title + "|||" + body + "|||" + tags + "|||" + date + pinned
+
+
+def notes_word_count(body):
+    count = 0
+    for word in body.split():
+        count = count + 1
+
+    return count
+
+def notes_menu():
+    notes = notes_load()
+
+    while True:
+        print()
+        print("____________the ledger__________")
+        print("  "+ str(len(notes)) + " notes")
+        print()
+        print("  1 - add a note")
+        print("  2 - back")
+        print()
+        pick = input("  >> ").strip()
+
+
+        if pick == "1":
+            title = input("   title:").strip()
+            body = input("   body:").strip()
+            tags = input("   tags:").strip()
+            if len(title) > 0 and len(body) > 0:
+                today = str(datetime.date.today())
+                new_note = notes_formet(title, body , tags, today, "0")
+                notes.append(new_note)
+                notes_save(notes)
+                print("  saved")
+            else:
+                print(" need title and a body")
+
+        elif pick == "2":
+            break
+
+
+
+                
+
+
 
 # strenght checker
 def check_strength(pw , lenght):
@@ -324,7 +400,9 @@ def menu():
 
 ||  5 - quiz
 
-||  6 - quit
+||  6 - the ledger
+
+||  7 - quit
     """ + RESET) 
 # menu loop
 while True:
@@ -341,8 +419,10 @@ while True:
         generate_password()
     elif choice == "5":
         quiz()
-
     elif choice == "6":
+        notes_menu()
+
+    elif choice == "7":
         if kill(name):
             break
         
