@@ -2,6 +2,7 @@ import datetime
 import time 
 import random
 import string
+import os
 
 RESET ="\033[0m"
 CYAN = "\033[36m"
@@ -10,6 +11,133 @@ YELLOW ="\033[33m"
 RED ="\033[31m"
 GREY = "\033[90m"
 BOLD = "\033[1m"
+
+
+def file_size_readble(size):
+    if size < 1024:
+        return str(size) + "b"
+    elif size < 1024 * 1024:
+        return str(round(size / 1024 , 1)) + "kb"
+    elif size < 1024 * 1024 * 1024:
+        return str(round (size / (1024 * 1025), 1)) + "mb"
+    else:
+        return str(round(size / (1024 * 1024 * 1024), 2)) + "gb"
+
+
+def file_menu():
+    current = os.getcwd
+    while True:
+        print()
+        print("============file broser======")
+        print(" path: " + current)
+        print()
+
+        try:
+            entries = os.listdir(current)
+        except PermissionError:
+            print("   permission denied")
+            parant = os.path.dirname(current)
+            if len(parant) > 0:
+                current = parant
+            continue
+
+
+
+
+        fol = []
+        fil = []
+        for name in entries:
+            full = os.path.join(current , name)
+            if os.path.isdir(full):
+                fol.append(name)
+            else:
+                fil.append(name)
+
+
+        fol.sort()
+        fil.sort()
+
+
+        folder_map = {}
+        file_map = {}
+        num = 1
+
+
+        if len(fol) == 0 and len(fil) == 0:
+            print("   (folderis empty)")
+
+        for name in fol:
+            print( "  " + str(num) + "     [folder]" + name + "/")
+            folder_map[str(num)] = name
+            num = num + 1
+
+        for name in fil:
+            full = os.path.join(current, name)
+            try:
+                size = os.path.getsize(full)
+                size_text = file_size_readble(size)
+            except OSError:
+                size_text = " ??"
+            print( "  " + str(num) + "       " + name + "    " + size_text)
+            file_map[str(num)] = name
+            num = num + 1
+
+
+        print()
+        print("   ..  = go up one folder")
+        print("    /  = back to main menu")
+        pick = input(" selct  a number, .. or / :   ").strip()
+
+
+
+
+        if pick == "/":
+            print(" byeee cyaa soon")
+            break
+        elif pick == "..":
+            parant = os.path.dirname(current)
+            if len(parant) > 0:
+                current = parant
+        elif pick.isdigit() == True:
+            if pick in folder_map:
+                current = os.path.join(current , folder_map[pick])
+        elif pick in file_map:
+            fname = file_map[pick]
+            full = os.path.join(current, fname )
+            print()
+            print("------" + fname + "---------")
+            try:
+                size = os.path.getsize(full)
+                print("  size   : " + file_size_readble(size))
+                mt = os.path.getmtime(full)
+                print("  modified : " + str(datetime.datetime.fromtimestamp(mt)))
+
+            except OSError:
+                print()
+                input(" presss enter to continue.......")
+        else:
+            print("  no such number")
+    else:
+        print("   type a number or .. or /")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def notes_load():
     notes = []
