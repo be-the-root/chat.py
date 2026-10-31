@@ -22,7 +22,7 @@ def file_size_readble(size):
         return str(round (size / (1024 * 1025), 1)) + "mb"
     else:
         return str(round(size / (1024 * 1024 * 1024), 2)) + "gb"
-
+# file menu
 def file_menu():
     current = os.getcwd
     while True:
