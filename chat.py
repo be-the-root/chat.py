@@ -40,7 +40,7 @@ def notes_parse(note):
     return parts
 
 def notes_formet(title , body , tags , date , pinned):
-    return title + "|||" + body + "|||" + tags + "|||" + date + pinned
+    return title + "|||" + body + "|||" + tags + "|||" + date + "|||" + pinned
 
 def notes_word_count(body):
     count = 0
@@ -100,17 +100,17 @@ def notes_menu():
                 print("    type a number")
                 continue
             n = int(num)
-        if n < 1 or n > len(notes):
-            print("   no such note ")
-            continue
-        parts = notes_parse(notes[n - 1])
-        print()
-        print("   old title: " + parts[0])
-        print("   old body : " + parts[1])
-        new_title = input("   new title (blank = keep): ").strip
+            if n < 1 or n > len(notes):
+                  print("   no such note ")
+                  continue
+            parts = notes_parse(notes[n - 1])
+            print()
+            print("   old title: " + parts[0])
+            print("   old body : " + parts[1])
+            new_title = input("   new title (blank = keep): ").strip()
 
-        if len(new_title) > 0:
-            parts[0] = new_title
+            if len(new_title) > 0:
+               parts[0] = new_title
             new_body = input("    new body ( blanck = keep )").strip()
 
             if len(new_body) > 0:
@@ -129,7 +129,7 @@ def notes_menu():
             if n < 1 or n > len(notes):
                 print("   no such note")
                 continue
-            title = notes_parse(notes(n - 1)[0])
+            title = notes_parse(notes[n - 1])[0]
             print("   delete:  " + title  + " ? ")
             ok = input("   (y/nn):  ").strip().lower()
             if ok == "y":
