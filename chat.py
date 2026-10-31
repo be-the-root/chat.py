@@ -23,15 +23,10 @@ def notes_load():
         pass
     return notes
 
-
-
 def notes_save(notes):
     with open("notes.txt" , "w") as f:
         for note in notes:
             f.write(note + "\n")
-
-
-
 
 def notes_parse(note):
     parts = note.split("|||")
@@ -67,10 +62,6 @@ def notes_menu():
         print("  6 - back")
         print()
         pick = input("  >> ").strip()
-
-
-
-
         if pick == "1":
             title = input("   title:").strip()
             body = input("   body:").strip()
@@ -138,15 +129,6 @@ def notes_menu():
                 print("deleted")
             else:
                 print("   kept")
-
-            
-
-
-
-
-
-
-
         elif pick == "3":
             num = input("    number: ").strip()
             if not num.isdigit():
