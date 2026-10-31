@@ -42,7 +42,6 @@ def notes_parse(note):
 def notes_formet(title , body , tags , date , pinned):
     return title + "|||" + body + "|||" + tags + "|||" + date + pinned
 
-
 def notes_word_count(body):
     count = 0
     for word in body.split():
@@ -51,7 +50,7 @@ def notes_word_count(body):
 
 
     return count
-
+# notes menu
 def notes_menu():
     notes = notes_load()
 
@@ -170,15 +169,7 @@ def notes_menu():
 
             print()
         elif pick == "6":
-            break
-
-
-
-
-                
-
-
-
+            break  
 # strenght checker
 def check_strength(pw , lenght):
     has_lower = False
