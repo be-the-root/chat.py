@@ -63,7 +63,9 @@ def notes_menu():
         print("  1 - add a note")
         print("  2 - list all")
         print("  3 - read a note")
-        print("  4 - back")
+        print("  4 - edit a note")
+        print("  5 - delete a note")
+        print("  6 - back")
         print()
         pick = input("  >> ").strip()
 
@@ -93,8 +95,52 @@ def notes_menu():
                     if parts[4] == "1":
                         mark = " *"
                     print("  " + str(i + 1) + mark + "   " + parts [0])
+        elif pick == "4":
+            num = input("   number to edit: ").strip()
+            if not num.isdigit():
+                print("    type a number")
+                continue
+            n = int(num)
+        if n < 1 or n > len(notes):
+            print("   no such note ")
+            continue
+        parts = notes_parse(notes[n - 1])
+        print()
+        print("   old title: " + parts[0])
+        print("   old body : " + parts[1])
+        new_title = input("   new title (blank = keep): ").strip
 
+        if len(new_title) > 0:
+            parts[0] = new_title
+            new_body = input("    new body ( blanck = keep )").strip()
 
+            if len(new_body) > 0:
+                parts[1] = new_body
+            notes[ n - 1] = notes_formet(parts[0] , parts[1] , parts[2] , parts[3]   ,parts[4])
+
+            notes_save(notes)
+            print("   updated")
+
+        elif pick == "5":
+            num = input("  number to deletee: ").strip()
+            if not num.isdigit():
+                print("  type a number")
+                continue
+            n = int(num)
+            if n < 1 or n > len(notes):
+                print("   no such note")
+                continue
+            title = notes_parse(notes(n - 1)[0])
+            print("   delete:  " + title  + " ? ")
+            ok = input("   (y/nn):  ").strip().lower()
+            if ok == "y":
+                notes.pop(n-1)
+                notes_save(notes)
+                print("deleted")
+            else:
+                print("   kept")
+
+            
 
 
 
@@ -123,7 +169,7 @@ def notes_menu():
             print("   " + parts[1])
 
             print()
-        elif pick == "4":
+        elif pick == "6":
             break
 
 
