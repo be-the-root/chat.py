@@ -23,7 +23,6 @@ def file_size_readble(size):
     else:
         return str(round(size / (1024 * 1024 * 1024), 2)) + "gb"
 
-
 def file_menu():
     current = os.getcwd
     while True:
@@ -119,25 +118,6 @@ def file_menu():
             print("  no such number")
     else:
         print("   type a number or .. or /")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 def notes_load():
     notes = []
