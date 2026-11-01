@@ -29,62 +29,62 @@ def magic_8ball():
     ]
 
     print()
-    print("---------- magic 8 ball -----------")
+    print(CYAN + BOLD + "---------- magic 8 ball -----------" + RESET)
     print()
-    question = input("  ask yes or no question :  ")
+    question = input(CYAN + BOLD + "  ask yes or no question :  "  + RESET)
     if len(question) == 0:
-        print("  u didnt asked anything..")
-        input("press enter....")
+        print(RED + BOLD + "  u didnt asked anything.." + RESET)
+        input(CYAN + BOLD + "press enter...." + RESET)
         return
 
     print()
-    print("shakeing the ball....")
+    print(CYAN + BOLD +"shakeing the ball...." + RESET)
     time.sleep(1)
     print()
-    print("    "+ random.choice(answers))
+    print(GREEN + BOLD + "    "+ random.choice(answers) + RESET)
     print()
-    input("press enter....")
+    input(CYAN + BOLD + "press enter...." + RESET)
 
 
 def dice_roll():
     print()
-    print("--------dice roller --------")
+    print(YELLOW + BOLD + "--------dice roller --------" + RESET)
     print()
 
-    sides_text = input("how man sides? (6/8/12/20):  ").strip()
+    sides_text = input(CYAN + BOLD + "how man sides? (6/8/12/20):  " + RESET).strip()
     if not sides_text.isdigit():
-        print("type a number")
-        input("  press enter.....")
+        print(CYAN + BOLD + "type a number" + RESET)
+        input(CYAN + "  press enter....." + RESET)
         return
 
     sides = int(sides_text)
     if sides < 2:
-        print(" dice atleast need 2 sides")
-        input("  press enter...")
+        print(RED + BOLD + " dice atleast need 2 sides" + RESET)
+        input(CYAN + "  press enter..." + RESET)
         return
 
     result = random.randint(1, sides)
     print()
-    print("rolling a dice with " + str(sides) + " sides....")
+    print(GREEN + BOLD + "rolling a dice with " + str(sides) + " sides...." + RESET)
     time.sleep(0.3)
-    print("  you got:  " + str(result))
+    print(GREEN + BOLD + "  you got:  " + str(result) + RESET)
     print()
-    input("  press enter")
+    input(CYAN + "  press enter" + RESET)
 
 
 def file_search():
     print()
-    print("=========search files========")
+    print(GREEN + BOLD + "=========search files========" + RESET)
     print()
 
 
 
 
-    term = input("   search for:  ").strip().lower()
+    term = input(CYAN + BOLD + "   search for:  " + RESET).strip().lower()
 
     if len(term) == 0:
-        print("   u didnt type anything")
-        input("   presss enter....")
+        print(RED + BOLD + "   u didnt type anything" + RESET)
+        input(CYAN + "   presss enter...." + RESET)
         return
 
     folder = os.getcwd()
@@ -92,13 +92,13 @@ def file_search():
     try:
         entries = os.listdir(folder)
     except PermissionError:
-        print("   permision denied")
-        input("  press enter...")
+        print(RED + BOLD + "   permision denied" + RESET)
+        input(CYAN + BOLD + "  press enter..." + RESET)
         return
 
     print()
-    print("  searching in:  " + folder)
-    print("  for: " + term)
+    print(GREEN + BOLD + "  searching in:  " + folder + RESET)
+    print(GREEN + BOLD + "  for: " + term + RESET)
     print()
 
 
@@ -117,9 +117,9 @@ def file_search():
 
     print()
     if found == 0:
-        print("   no files with " + term + "  ")
+        print(RED + BOLD + "   no files with " + term + "  " + RESET)
     else:
-        print("   "+ str(found) + " file(s) found")
+        print(GREEN + BOLD  + "   "+ str(found) + " file(s) found" + RESET)
 
     input("  press enter to continue............hehe")
 
@@ -137,14 +137,14 @@ def file_menu():
     current = os.getcwd()
     while True:
         print()
-        print("============file broser======")
-        print(" path: " + current)
+        print(GREEN + BOLD + "============file broser======" + RESET)
+        print(GREEN + " path: " + current   + RESET)
         print()
 
         try:
             entries = os.listdir(current)
         except PermissionError:
-            print("   permission denied")
+            print(RED + BOLD +"   permission denied" + RESET)
             parant = os.path.dirname(current)
             if len(parant) > 0:
                 current = parant
@@ -173,7 +173,7 @@ def file_menu():
 
 
         if len(fol) == 0 and len(fil) == 0:
-            print("   (folder is empty)")
+            print(RED + BOLD + "   (folder is empty)" + RESET)
 
         for name in fol:
             print( "  " + str(num) + "     " + YELLOW + "     [folder]" + name + "/" + RESET)
@@ -187,15 +187,15 @@ def file_menu():
                 size_text = file_size_readble(size)
             except OSError:
                 size_text = " ??"
-            print( "  " + str(num) + "       " + CYAN +  name + RESET +  "    " + RED +  size_text + RESET)
+            print( "  " + str(num) + "       " + CYAN + BOLD +  name + RESET +  "    " + RED + BOLD +  size_text + RESET)
             file_map[str(num)] = name
             num = num + 1
 
 
         print()
-        print(CYAN + BOLD + "   ..  = go up one folder")
-        print("    /  = back to main menu")
-        print("    s  = search files")
+        print(CYAN + BOLD + "   ..  = go up one folder" + RESET)
+        print(CYAN + BOLD + "    /  = back to main menu" + RESET)
+        print(CYAN + BOLD + "    s  = search files" + RESET)
         pick = input(">>>>>>  ").strip()
 
 
@@ -220,17 +220,17 @@ def file_menu():
                 print("------" + fname + "---------")
                 try:
                     size = os.path.getsize(full)
-                    print("  size   : " + file_size_readble(size))
+                    print(GREEN + "  size   : " + file_size_readble(size) + RESET)
                     mt = os.path.getmtime(full)
-                    print("  modified : " + str(datetime.datetime.fromtimestamp(mt)))
+                    print(GREEN + "  modified : " + str(datetime.datetime.fromtimestamp(mt)) + RESET)
 
                 except OSError:
                     print()
-                input(" presss enter to continue.......")
+                input(CYAN + " presss enter to continue......." + RESET)
             else:
-                print("  no such number")
+                print(RED + BOLD + "  no such number" + RESET)
         else:
-            print("   type a number or .. or /")
+            print(RED + BOLD + "   type a number or .. or /" + RESET)
 
 def notes_load():
     notes = []
@@ -272,7 +272,7 @@ def notes_menu():
 
     while True:
         print()
-        print("____________the ledger__________")
+        print(CYAN + BOLD + "____________the ledger__________")
         print("  "+ str(len(notes)) + " notes")
         print()
         print("  1 - add a note")
@@ -280,21 +280,21 @@ def notes_menu():
         print("  3 - read a note")
         print("  4 - edit a note")
         print("  5 - delete a note")
-        print("  6 - back")
+        print("  6 - back" + RESET)
         print()
         pick = input("  >> ").strip()
         if pick == "1":
-            title = input("   title:").strip()
+            title = input(GREEN + "   title:").strip()
             body = input("   body:").strip()
-            tags = input("   tags:").strip()
+            tags = input("   tags:" + RESET).strip()
             if len(title) > 0 and len(body) > 0:
                 today = str(datetime.date.today())
                 new_note = notes_formet(title, body , tags, today, "0")
                 notes.append(new_note)
                 notes_save(notes)
-                print("  saved")
+                print(GREEN + BOLD  + "  saved" + RESET)
             else:
-                print(" need title and a body")
+                print(RED + BOLD + " need title and a body" + RESET)
 
         elif pick == "2":
             if len(notes) == 0:
@@ -679,9 +679,9 @@ def menu():
 ------------------menu------------------
 ||  1 - say hello (yes it does nothing else)
 
-||  2 - tell me a joke !!!
+||  2 - tell me a joke !!! (just prints joke)
 
-||  3 - hmmm i dont know , just try
+||  3 - hmmm i dont know , just try (does nothing on purpose)
 
 ||  4 - password generator
 
