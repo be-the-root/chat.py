@@ -48,7 +48,7 @@ def file_search():
             full = os.path.join(folder, name)
             if os.path.isfile(full):
                 try:
-                    size = os.path.join(folder, name)
+                    size = os.path.getsize(full)
                     size_text = file_size_readble(size)
                 except OSError:
                     size_text = "??"
@@ -72,7 +72,7 @@ def file_size_readble(size):
     elif size < 1024 * 1024:
         return str(round(size / 1024 , 1)) + "kb"
     elif size < 1024 * 1024 * 1024:
-        return str(round (size / (1024 * 1025), 1)) + "mb"
+        return str(round (size / (1024 * 1024), 1)) + "mb"
     else:
         return str(round(size / (1024 * 1024 * 1024), 2)) + "gb"
 # file menu
@@ -119,7 +119,7 @@ def file_menu():
             print("   (folder is empty)")
 
         for name in fol:
-            print( "  " + str(num) + "     [folder]" + name + "/")
+            print( "  " + str(num) + "     " + YELLOW + "     [folder]" + name + "/" + RESET)
             folder_map[str(num)] = name
             num = num + 1
 
@@ -130,7 +130,7 @@ def file_menu():
                 size_text = file_size_readble(size)
             except OSError:
                 size_text = " ??"
-            print( "  " + str(num) + "       " + name + "    " + size_text)
+            print( "  " + str(num) + "       " + CYAN +  name + RESET +  "    " + RED +  size_text + RESET)
             file_map[str(num)] = name
             num = num + 1
 
