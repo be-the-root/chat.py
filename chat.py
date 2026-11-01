@@ -12,6 +12,32 @@ RED ="\033[31m"
 GREY = "\033[90m"
 BOLD = "\033[1m"
 
+def dice_roll():
+    print()
+    print("--------dice roller --------")
+    print()
+
+    sides_text = input("how man sides? (6/8/12/20):  ").strip()
+    if not sides_text.isdigit():
+        print("type a number")
+        input("  press enter.....")
+        return
+
+    sides = int(sides_text)
+    if sides < 2:
+        print(" dice atleast need 2 sides")
+        input("  press enter...")
+        return
+
+    result = random.randint(1, sides)
+    print()
+    print("rolling a dice with " + str(sides) + " sides....")
+    time.sleep(0.3)
+    print("  you got:  " + str(result))
+    print()
+    input("  press enter")
+
+
 def file_search():
     print()
     print("=========search files========")
@@ -62,9 +88,6 @@ def file_search():
         print("   "+ str(found) + " file(s) found")
 
     input("  press enter to continue............hehe")
-
-
-
 
 def file_size_readble(size):
     if size < 1024:
@@ -136,7 +159,7 @@ def file_menu():
 
 
         print()
-        print("   ..  = go up one folder")
+        print(CYAN + BOLD + "   ..  = go up one folder")
         print("    /  = back to main menu")
         print("    s  = search files")
         pick = input(">>>>>>  ").strip()
@@ -145,7 +168,7 @@ def file_menu():
 
 
         if pick == "/":
-            print(" byeee cyaa soon")
+            print(RED + BOLD + " byeee cyaa soon" + RESET)
             break
         elif pick == "..":
             parant = os.path.dirname(current)
@@ -634,7 +657,9 @@ def menu():
 
 ||  7 - file browser
 
-||  8 - quit
+||  8 - dice roller
+
+||  9 - quit
     """ + RESET) 
 # menu loop
 while True:
@@ -657,9 +682,11 @@ while True:
     elif choice == "7":
         file_menu()
 
-    elif choice == "8":
+    elif choice == "9":
         if kill(name):
             break
+    elif choice == "8":
+        dice_roll()
         
         
     else:
