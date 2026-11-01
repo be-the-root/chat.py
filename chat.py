@@ -12,6 +12,22 @@ RED ="\033[31m"
 GREY = "\033[90m"
 BOLD = "\033[1m"
 
+def coin_flip():
+    print()
+    print(CYAN + BOLD + "-------coin flip--------" + RESET)
+    print()
+
+
+    input(CYAN + BOLD + "press enter to flip a coin" + RESET)
+    print(GREEN + BOLD + "fliping....." + RESET)
+    time.sleep(2)
+
+    result = random.choice(["heads" , "tails"])
+    print()
+    print("  it landed on: " + result)
+    print()
+    input("press enter")
+
 def magic_8ball():
     answers = [
         "yes",
@@ -656,7 +672,7 @@ _______________________________________________
 |_____________________________________________ |
 """ + RESET )
 while True:
-    print(GREEN + "i am your personal ai assistance (just without intelligence)" + RESET)
+    print(GREEN + BOLD + "i am your personal ai assistance (just without intelligence)" + RESET)
     print()
     print()
     break
@@ -695,7 +711,9 @@ def menu():
 
 ||  9 - magic 8 ball
 
-||  10 - quit
+||  10- coin flip
+
+||  11 - quit
     """ + RESET) 
 # menu loop
 while True:
@@ -718,13 +736,15 @@ while True:
     elif choice == "7":
         file_menu()
 
-    elif choice == "10":
+    elif choice == "11":
         if kill(name):
             break
     elif choice == "8":
         dice_roll()
     elif choice == "9":
         magic_8ball()
+    elif choice == "10":
+        coin_flip()
         
     else:
         print()
