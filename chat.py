@@ -12,6 +12,59 @@ RED ="\033[31m"
 GREY = "\033[90m"
 BOLD = "\033[1m"
 
+def file_search():
+    print()
+    print("=========search files========")
+    print()
+
+
+
+
+    term = input("   search for:  ").strip().lower()
+
+    if len(term) == 0:
+        print("   u didnt type anything")
+        input("   presss enter....")
+        return
+
+    folder = os.getcwd()
+
+    try:
+        entries = os.listdir(folder)
+    except PermissionError:
+        print("   permision denied")
+        input("  press enter...")
+        return
+
+    print()
+    print("  searching in:  " + folder)
+    print("  for: " + term)
+    print()
+
+
+    found = 0
+    for name in entries:
+        if term in name.lower():
+            full = os.path.join(folder, name)
+            if os.path.isfile(full):
+                try:
+                    size = os.path.join(folder, name)
+                    size_text = file_size_readble(size)
+                except OSError:
+                    size_text = "??"
+                print("   " + name + "  " + size_text)
+                found = found + 1
+
+    print()
+    if found == 0:
+        print("   no files wit " + term + "  ")
+    else:
+        print("   "+ str(found) + " file(s) found")
+
+    input("  press enter to continue............hehe")
+
+
+
 
 def file_size_readble(size):
     if size < 1024:
@@ -85,7 +138,8 @@ def file_menu():
         print()
         print("   ..  = go up one folder")
         print("    /  = back to main menu")
-        pick = input(" selct  a number, .. or / :   ").strip()
+        print("    s  = search files")
+        pick = input(">>>>>>  ").strip()
 
 
 
@@ -97,6 +151,8 @@ def file_menu():
             parant = os.path.dirname(current)
             if len(parant) > 0:
                 current = parant
+        elif pick == "s":
+            file_search()
         elif pick.isdigit() == True:
             if pick in folder_map:
                 current = os.path.join(current , folder_map[pick])
