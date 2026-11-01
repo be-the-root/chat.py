@@ -24,9 +24,9 @@ def coin_flip():
 
     result = random.choice(["heads" , "tails"])
     print()
-    print("  it landed on: " + result)
+    print(GREEN + BOLD + "  it landed on: " + result + RESET)
     print()
-    input("press enter")
+    input(CYAN + BOLD  +  "press enter" + RESET)
 
 def magic_8ball():
     answers = [
