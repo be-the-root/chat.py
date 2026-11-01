@@ -12,6 +12,40 @@ RED ="\033[31m"
 GREY = "\033[90m"
 BOLD = "\033[1m"
 
+def magic_8ball():
+    answers = [
+        "yes",
+        "no",
+        "maybe",
+        "defimitely",
+        "absolutely not",
+        "ask me later",
+        "i dont know",
+        "signs point to yes",
+        "very doubtful",
+        "my sorces say no",
+        "without a doubt",
+        "you already know the answer",
+    ]
+
+    print()
+    print("---------- magic 8 ball -----------")
+    print()
+    question = input("  ask yes or no question :  ")
+    if len(question) == 0:
+        print("  u didnt asked anything..")
+        input("press enter....")
+        return
+
+    print()
+    print("shakeing the ball....")
+    time.sleep(1)
+    print()
+    print("    "+ random.choice(answers))
+    print()
+    input("press enter....")
+
+
 def dice_roll():
     print()
     print("--------dice roller --------")
@@ -659,7 +693,9 @@ def menu():
 
 ||  8 - dice roller
 
-||  9 - quit
+||  9 - magic 8 ball
+
+||  10 - quit
     """ + RESET) 
 # menu loop
 while True:
@@ -682,12 +718,13 @@ while True:
     elif choice == "7":
         file_menu()
 
-    elif choice == "9":
+    elif choice == "10":
         if kill(name):
             break
     elif choice == "8":
         dice_roll()
-        
+    elif choice == "9":
+        magic_8ball()
         
     else:
         print()
