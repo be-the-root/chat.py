@@ -576,7 +576,9 @@ def menu():
 
 ||  6 - the ledger
 
-||  7 - quit
+||  7 - file browser
+
+||  8 - quit
     """ + RESET) 
 # menu loop
 while True:
@@ -597,6 +599,9 @@ while True:
         notes_menu()
 
     elif choice == "7":
+        file_menu()
+
+    elif choice == "8":
         if kill(name):
             break
         
