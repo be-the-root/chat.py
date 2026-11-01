@@ -57,7 +57,7 @@ def file_search():
 
     print()
     if found == 0:
-        print("   no files wit " + term + "  ")
+        print("   no files with " + term + "  ")
     else:
         print("   "+ str(found) + " file(s) found")
 
