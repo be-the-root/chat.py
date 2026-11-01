@@ -63,7 +63,7 @@ def file_menu():
 
 
         if len(fol) == 0 and len(fil) == 0:
-            print("   (folderis empty)")
+            print("   (folder is empty)")
 
         for name in fol:
             print( "  " + str(num) + "     [folder]" + name + "/")
@@ -100,24 +100,24 @@ def file_menu():
         elif pick.isdigit() == True:
             if pick in folder_map:
                 current = os.path.join(current , folder_map[pick])
-        elif pick in file_map:
-            fname = file_map[pick]
-            full = os.path.join(current, fname )
-            print()
-            print("------" + fname + "---------")
-            try:
-                size = os.path.getsize(full)
-                print("  size   : " + file_size_readble(size))
-                mt = os.path.getmtime(full)
-                print("  modified : " + str(datetime.datetime.fromtimestamp(mt)))
-
-            except OSError:
+            elif pick in file_map:
+                fname = file_map[pick]
+                full = os.path.join(current, fname )
                 print()
+                print("------" + fname + "---------")
+                try:
+                    size = os.path.getsize(full)
+                    print("  size   : " + file_size_readble(size))
+                    mt = os.path.getmtime(full)
+                    print("  modified : " + str(datetime.datetime.fromtimestamp(mt)))
+
+                except OSError:
+                    print()
                 input(" presss enter to continue.......")
+            else:
+                print("  no such number")
         else:
-            print("  no such number")
-    else:
-        print("   type a number or .. or /")
+            print("   type a number or .. or /")
 
 def notes_load():
     notes = []
