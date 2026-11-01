@@ -24,7 +24,7 @@ def file_size_readble(size):
         return str(round(size / (1024 * 1024 * 1024), 2)) + "gb"
 # file menu
 def file_menu():
-    current = os.getcwd
+    current = os.getcwd()
     while True:
         print()
         print("============file broser======")
